@@ -151,6 +151,9 @@ button.shopify-payment-button__button--unbranded {
 
 .card--standard .card__inner,
 .card--card .card__inner {
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--ts-hairline);
   transition: border-color 0.3s var(--ts-ease);
 }
@@ -253,4 +256,85 @@ hr,
 .announcement-bar__message {
   letter-spacing: 0.08em;
   color: var(--ts-brass);
+}
+
+/* ============================================================
+ * PASS 3 — Glass material system
+ * ------------------------------------------------------------
+ * The app's signature: translucent surfaces with a bright top
+ * highlight strip, hairline border, soft shadow, and a green
+ * radial glow. Values lifted from theme.ts heroCard / glassHighlight
+ * / heroGlow. Use .ts-glass on any custom section/HTML block to
+ * get the app material; .ts-pill for the app's tag/badge pills.
+ * ============================================================ */
+.ts-glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ts-hairline);
+  border-radius: 2.4rem;
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+/* Bright highlight strip across the top edge (app glassHighlight) */
+.ts-glass::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 6.4rem;
+  background: linear-gradient(rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* Glass pill — app heroEditorialTag / infoBadge */
+.ts-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--ts-hairline-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ts-brass);
+}
+
+/* ------------------------------------------------------------
+ * Hero green glow — a soft pine radial bleeding from the top-right
+ * corner of the image banner, over the media but under the text.
+ * (app heroGlow: rgba(77,146,73,0.16))
+ * ------------------------------------------------------------ */
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    55% 55% at 85% 12%,
+    rgba(77, 146, 73, 0.22),
+    rgba(77, 146, 73, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keep hero content above the glow */
+.banner__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------
+ * Cart notification / drawer — glass to match the app's overlays.
+ * ------------------------------------------------------------ */
+.cart-notification,
+.cart-drawer .drawer__inner {
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
