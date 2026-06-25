@@ -1,0 +1,186 @@
+/* ============================================================
+ * Top$hottas brand layer
+ * ------------------------------------------------------------
+ * Mirrors the mobile app's design system (src/theme.ts).
+ * Loaded AFTER base.css so it overrides Dawn defaults.
+ *
+ * Color schemes (bg / text / button) live in the theme editor
+ * -> config/settings_data.json. This file owns the finer brand
+ * details schemes can't express: heading weight, accent gold,
+ * hairlines, badges, button + input polish.
+ *
+ * To resync with the app: update the --ts-* tokens below to
+ * match src/theme.ts, commit, push.
+ * ============================================================ */
+
+:root {
+  /* --- Surfaces (theme.ts colors.background / surface) --- */
+  --ts-bg: #040805;
+  --ts-surface: #102013;
+
+  /* --- Accents --- */
+  --ts-gold: #c2a96d;          /* colors.gold  */
+  --ts-brass: #b79a63;         /* colors.brass */
+  --ts-amber: #a8772a;         /* colors.amber */
+
+  /* --- Green accent system --- */
+  --ts-pine: #4d9249;          /* colors.pine  */
+  --ts-sage: #7aa46d;          /* colors.sage  */
+  --ts-leaf: #6e8f43;          /* colors.leaf  */
+  --ts-moss: #4e5f3e;          /* colors.moss  */
+
+  /* --- Text --- */
+  --ts-text: #f2f1ec;          /* colors.text      */
+  --ts-muted: #b3bcaa;         /* colors.mutedText */
+
+  /* --- Semantic tokens (theme.ts) --- */
+  --ts-hairline: rgba(242, 241, 236, 0.08);
+  --ts-hairline-strong: rgba(242, 241, 236, 0.12);
+  --ts-accent-soft: rgba(122, 164, 109, 0.16);
+  --ts-accent-border: rgba(190, 215, 178, 0.18);
+  --ts-primary-fill: rgba(77, 146, 73, 0.28);
+  --ts-primary-border: rgba(190, 215, 178, 0.26);
+
+  /* Easing used across the app for hover transitions */
+  --ts-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------
+ * Typography — the app uses heavy headlines with tight tracking.
+ * Heading weight is loaded via settings (assistant bold); here we
+ * tighten the letter-spacing Dawn adds and lift the weight floor.
+ * ------------------------------------------------------------ */
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hxxl,
+.hxl,
+.h0 {
+  letter-spacing: -0.02em;
+}
+
+/* Uppercase micro-labels / subtitles (heroLabel, searchLabel in app):
+ * wide tracking, brass tone. Dawn applies these classes to small
+ * eyebrow text above headings. */
+.subtitle,
+.caption-with-letter-spacing {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--ts-brass);
+}
+
+/* ------------------------------------------------------------
+ * Buttons — app primary = translucent green, light-green hairline
+ * border, uppercase label with tracking, lifts on hover.
+ * ------------------------------------------------------------ */
+.button,
+.shopify-payment-button__button--unbranded {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  transition: transform 0.25s var(--ts-ease), box-shadow 0.25s var(--ts-ease);
+}
+
+.button:not([disabled]):hover {
+  transform: translateY(-1px);
+}
+
+/* Gold focus ring instead of Dawn's default outline */
+.button:focus-visible,
+.field__input:focus-visible,
+.select__select:focus-visible {
+  outline: 0.2rem solid var(--ts-gold);
+  outline-offset: 0.3rem;
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------
+ * Inputs — gold focus, brass hairline (matches app search/email).
+ * ------------------------------------------------------------ */
+.field__input,
+.select__select,
+.customer .field input,
+.localization-form__select {
+  border-color: var(--ts-accent-border);
+}
+
+.field__input:focus,
+.field__input:focus-visible {
+  border-color: var(--ts-gold);
+}
+
+/* ------------------------------------------------------------
+ * Prices — sale price in gold, compare-at muted strikethrough.
+ * Mirrors the Featured Drop card in the app.
+ * ------------------------------------------------------------ */
+.price--on-sale .price-item--sale,
+.price__sale .price-item--sale {
+  color: var(--ts-gold);
+  font-weight: 700;
+}
+
+.price__sale .price-item--regular,
+.price--on-sale .price-item--regular {
+  color: var(--ts-muted);
+  opacity: 0.85;
+}
+
+/* ------------------------------------------------------------
+ * Badges — uppercase pill with tracking (app badge style).
+ * ------------------------------------------------------------ */
+.badge {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ------------------------------------------------------------
+ * Cards & dividers — consistent brand hairline over the dark bg.
+ * ------------------------------------------------------------ */
+.card-wrapper,
+.collection-list__item {
+  --border-opacity: 1; /* let our hairline color drive the look */
+}
+
+hr,
+.section-divider {
+  border-color: var(--ts-hairline);
+}
+
+/* ------------------------------------------------------------
+ * Header — subtle brass hairline under the sticky header, like
+ * the app's translucent top bar separation.
+ * ------------------------------------------------------------ */
+.header-wrapper {
+  border-bottom: 1px solid var(--ts-hairline);
+}
+
+/* Nav link hover -> gold (app accent on interactive text) */
+.header__menu-item:hover .header__active-menu-item,
+.header__menu-item:hover span,
+.list-menu__item--link:hover {
+  color: var(--ts-gold);
+}
+
+/* ------------------------------------------------------------
+ * Announcement bar — gold text on near-black (already in app voice
+ * "Welcome to the Top$hotta Family!").
+ * ------------------------------------------------------------ */
+.announcement-bar__message {
+  letter-spacing: 0.08em;
+  color: var(--ts-brass);
+}
