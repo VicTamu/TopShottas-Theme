@@ -43,6 +43,9 @@
 
   /* Easing used across the app for hover transitions */
   --ts-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Primary button hover fill (deepened from primaryFill for affordance) */
+  --ts-primary-fill-hover: rgba(77, 146, 73, 0.42);
 }
 
 /* ------------------------------------------------------------
@@ -105,6 +108,73 @@ h5 {
   outline: 0.2rem solid var(--ts-gold);
   outline-offset: 0.3rem;
   box-shadow: none;
+}
+
+/* Primary buttons -> app's translucent green fill + light hairline.
+ * Dawn draws the fill via background-color and the border via the
+ * ::after ring, so we override both. Secondary/tertiary keep Dawn's
+ * outline style (which already reads as the app's secondary button). */
+.button:not(.button--secondary):not(.button--tertiary),
+.product-form__submit,
+button.shopify-payment-button__button--unbranded {
+  background-color: var(--ts-primary-fill);
+  transition: background-color 0.25s var(--ts-ease), transform 0.25s var(--ts-ease);
+}
+
+.button:not(.button--secondary):not(.button--tertiary)::after,
+.product-form__submit::after,
+.shopify-payment-button__button--unbranded::after {
+  box-shadow: 0 0 0 var(--buttons-border-width) var(--ts-primary-border);
+}
+
+.button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
+.product-form__submit:not([disabled]):hover {
+  background-color: var(--ts-primary-fill-hover);
+}
+
+.button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover::after,
+.product-form__submit:not([disabled]):hover::after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + 1px) var(--ts-primary-border);
+}
+
+/* ------------------------------------------------------------
+ * Product cards — hairline border, hover lift, subtle image zoom.
+ * Matches the Featured Drop card feel in the app.
+ * ------------------------------------------------------------ */
+.card-wrapper {
+  transition: transform 0.3s var(--ts-ease);
+}
+
+.card-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+.card--standard .card__inner,
+.card--card .card__inner {
+  border: 1px solid var(--ts-hairline);
+  transition: border-color 0.3s var(--ts-ease);
+}
+
+.card-wrapper:hover .card__inner {
+  border-color: var(--ts-accent-border);
+}
+
+.card__media .media img {
+  transition: transform 0.6s var(--ts-ease);
+}
+
+.card-wrapper:hover .card__media .media img {
+  transform: scale(1.04);
+}
+
+/* ------------------------------------------------------------
+ * Variant pills — accent the selected option in green (app pills).
+ * ------------------------------------------------------------ */
+.product-form__input input[type='radio']:checked + label,
+.variant-pills input[type='radio']:checked + label {
+  background-color: var(--ts-accent-soft);
+  border-color: var(--ts-accent-border);
+  color: var(--ts-text);
 }
 
 /* ------------------------------------------------------------
