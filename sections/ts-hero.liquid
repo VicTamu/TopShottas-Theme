@@ -7,7 +7,7 @@
 
 <div
   class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }}"
-  style="--ts-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  style="--ts-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }}; --ts-smoke-opacity: {{ section.settings.smoke_opacity | divided_by: 100.0 }};"
 >
   <div class="ts-hero__media">
     {%- if section.settings.image != blank -%}
@@ -95,6 +95,17 @@
       "label": "Animated smoke background",
       "info": "Plays the looping smoke video (muted). Falls back to a still image if off or unsupported.",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "smoke_opacity",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Smoke visibility",
+      "info": "App default is 50%. Higher = more visible smoke in the hero.",
+      "default": 50
     },
     {
       "type": "range",

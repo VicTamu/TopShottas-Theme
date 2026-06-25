@@ -388,7 +388,7 @@ hr,
 /* Animated smoke video — app parity: opacity 0.5 (see TS-Smoky2.mp4 usage).
    Respect reduced-motion: fall back to the static poster frame. */
 .ts-hero__video {
-  opacity: 0.5;
+  opacity: var(--ts-smoke-opacity, 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
