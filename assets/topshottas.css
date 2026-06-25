@@ -444,3 +444,74 @@ hr,
 .ts-hero--left .ts-hero__cta {
   align-self: flex-start;
 }
+
+/* ============================================================
+ * PASS 5 — Cart free-shipping bar + product-page trust
+ * ============================================================ */
+.ts-ship-bar {
+  margin: 0 0 1.2rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--ts-hairline);
+  border-radius: 1.2rem;
+  background: var(--ts-accent-soft);
+}
+
+.ts-ship-bar__label {
+  margin: 0 0 0.9rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: var(--ts-text);
+}
+
+.ts-ship-bar__label strong {
+  color: var(--ts-gold);
+  font-weight: 700;
+}
+
+.ts-ship-bar--unlocked .ts-ship-bar__label strong {
+  color: var(--ts-sage);
+}
+
+.ts-ship-bar__track {
+  height: 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ts-ship-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--ts-moss), var(--ts-pine));
+  transition: width 0.4s var(--ts-ease);
+}
+
+.ts-ship-bar--unlocked .ts-ship-bar__fill {
+  background: linear-gradient(90deg, var(--ts-pine), var(--ts-sage));
+}
+
+/* Product-page trust row under the buy buttons */
+.ts-pdp-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.6rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ts-pdp-trust span {
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  color: var(--ts-muted);
+  letter-spacing: 0.02em;
+}
+
+.ts-pdp-trust span::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ts-sage);
+  font-weight: 700;
+}

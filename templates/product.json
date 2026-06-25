@@ -45,9 +45,23 @@
             "show_gift_card_recipient": true
           }
         },
+        "trust": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"ts-pdp-trust\"><span>Heavyweight cotton</span><span>Tracked shipping</span><span>14-day returns</span></p>"
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "shipping_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & returns",
+            "icon": "truck",
+            "content": "<p>Free shipping on orders over $75. Every order ships tracked. If the fit isn’t right, returns are easy within 14 days.</p>"
+          }
         },
         "share": {
           "type": "share",
@@ -63,7 +77,9 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "trust",
         "description",
+        "shipping_tab",
         "share"
       ],
       "settings": {
@@ -95,7 +111,7 @@
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": false,
+        "show_rating": true,
         "padding_top": 36,
         "padding_bottom": 28
       }

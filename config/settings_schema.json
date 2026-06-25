@@ -1451,5 +1451,27 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Top$hottas",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Free shipping bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_shipping_enabled",
+        "label": "Show free shipping progress bar in cart",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "info": "Order subtotal (in store currency) needed to unlock free shipping.",
+        "default": 75
+      }
+    ]
   }
 ]

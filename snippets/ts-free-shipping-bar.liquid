@@ -1,0 +1,36 @@
+{% comment %}
+  Top$hottas free-shipping progress bar.
+  Renders inside the cart drawer; re-evaluates on every cart update
+  because Dawn re-renders the whole #CartDrawer section.
+  Threshold + on/off are theme settings (Theme settings -> Top$hottas).
+{% endcomment %}
+
+{%- if settings.free_shipping_enabled -%}
+  {%- assign ts_threshold = settings.free_shipping_threshold | default: 75 -%}
+  {%- assign ts_threshold_cents = ts_threshold | times: 100 -%}
+  {%- assign ts_remaining = ts_threshold_cents | minus: cart.total_price -%}
+  {%- if ts_remaining > 0 -%}
+    {%- assign ts_percent = cart.total_price | times: 100 | divided_by: ts_threshold_cents -%}
+  {%- else -%}
+    {%- assign ts_percent = 100 -%}
+  {%- endif -%}
+
+  <div class="ts-ship-bar{% if ts_remaining <= 0 %} ts-ship-bar--unlocked{% endif %}">
+    <p class="ts-ship-bar__label">
+      {%- if ts_remaining > 0 -%}
+        You’re <strong>{{ ts_remaining | money }}</strong> away from <strong>free shipping</strong>
+      {%- else -%}
+        ✓ You’ve unlocked <strong>free shipping</strong>
+      {%- endif -%}
+    </p>
+    <div
+      class="ts-ship-bar__track"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ ts_percent }}"
+    >
+      <div class="ts-ship-bar__fill" style="width: {{ ts_percent }}%;"></div>
+    </div>
+  </div>
+{%- endif -%}

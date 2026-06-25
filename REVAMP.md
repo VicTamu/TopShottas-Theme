@@ -42,16 +42,18 @@ Priority key: **P0** = launch blocker · **P1** = high impact · **P2** = nice-t
 - [ ] **P0 — Strong, visible primary CTA** above the fold ("Shop the drop" → collection).
 - [ ] **P1 — Product page essentials:** multiple images, size guide, clear variants,
       sticky/obvious Add-to-Cart. Dawn: product media gallery + blocks.
-- [ ] **P1 — Trust signals near ATC:** shipping/returns blurb, secure-checkout note.
-      Dawn: product "collapsible content" + icon-with-text blocks.
+- [x] **P1 — Trust signals near ATC:** DONE — `✓` trust line (cotton / tracked
+      shipping / 14-day returns) under buy buttons + "Shipping & returns" collapsible.
 - [ ] **P1 — Product reviews / social proof.** App: **Judge.me** (free tier) or
       **Shopify Product Reviews** alternative; shows stars on cards + PDP.
-- [ ] **P1 — Cart drawer with progress to free-shipping threshold.** Dawn cart drawer +
-      a shipping-bar (free apps) or manual goal text.
+      (Theme is ready — ratings turned on; stars appear once the app is installed.)
+- [x] **P1 — Cart drawer with progress to free-shipping threshold.** DONE — switched
+      cart to slide-out drawer + `ts-free-shipping-bar` snippet ($75, editable in
+      Theme settings → Top$hottas). Verified: "$50.01 away", 33% fill.
 - [ ] **P1 — Enable Shop Pay / Accelerated checkouts + express buttons.**
       Shopify: Settings → Payments.
-- [ ] **P2 — Product recommendations** ("You may also like"). Dawn has this natively
-      via Shopify **Search & Discovery** app (free, first-party).
+- [x] **P2 — Product recommendations** ("You may also like") — present on PDP +
+      ratings enabled. Quality improves once **Search & Discovery** (free) is installed.
 - [ ] **P2 — Urgency/scarcity** done tastefully (low-stock text, drop countdown).
 - [ ] **P2 — Quick-add to cart** from collection cards. Dawn: card quick-add setting.
 
