@@ -1,0 +1,35 @@
+{% comment %}
+  Top$hottas empty / info state — mirrors the app's infoCard
+  (ring artwork + TS mark, eyebrow pill, title, text, button).
+
+  Params:
+    class         extra modifier class (optional)
+    badge         eyebrow pill text (optional)
+    title         heading (required)
+    text          supporting copy (optional)
+    button_label  CTA label (optional)
+    button_url    CTA href (optional)
+{% endcomment %}
+
+<div class="ts-empty {{ class }}">
+  <div class="ts-empty__art" aria-hidden="true">
+    <span class="ts-empty__ring"></span>
+    <span class="ts-empty__mark">TS</span>
+  </div>
+
+  {%- if badge != blank -%}
+    <span class="ts-pill ts-empty__badge">{{ badge }}</span>
+  {%- endif -%}
+
+  <h1 class="ts-empty__title">{{ title }}</h1>
+
+  {%- if text != blank -%}
+    <p class="ts-empty__text">{{ text }}</p>
+  {%- endif -%}
+
+  {%- if button_label != blank -%}
+    <a href="{{ button_url | default: routes.all_products_collection_url }}" class="button ts-empty__btn">
+      {{ button_label }}
+    </a>
+  {%- endif -%}
+</div>

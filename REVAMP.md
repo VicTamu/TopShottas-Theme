@@ -21,7 +21,9 @@ Priority key: **P0** = launch blocker · **P1** = high impact · **P2** = nice-t
 - [x] **P2 — Editorial hero meta** — eyebrow `.ts-pill` done. (Stat chip still optional.)
 - [ ] **P2 — Confirm corner radius / button strength** (16px corners, translucent CTA)
       read the way you want vs. the app.
-- [ ] **P2 — Custom 404 + cart-empty states** styled like the app's info cards.
+- [x] **P2 — Custom 404 + cart-empty states** — DONE — reusable
+      `snippets/ts-empty-state.liquid` (glass card, TS ring mark, pill, CTA) used by
+      404, cart page, and cart drawer. Verified live.
 
 ## 2. Content density (the store looks empty)
 

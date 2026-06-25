@@ -515,3 +515,80 @@ hr,
   color: var(--ts-sage);
   font-weight: 700;
 }
+
+/* ============================================================
+ * PASS 6 — Empty / info states (snippets/ts-empty-state.liquid)
+ * App infoCard: ring artwork + TS mark, pill, title, text, button.
+ * Used by 404, cart page empty, cart drawer empty.
+ * ============================================================ */
+.ts-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3.2rem 2.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ts-hairline);
+  border-radius: 2.4rem;
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.28);
+}
+
+/* The 404 sits on a full page — give it breathing room */
+.ts-empty--page {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+/* Ring artwork with the TS monogram (app emptyStateArtwork) */
+.ts-empty__art {
+  position: relative;
+  width: 8.4rem;
+  height: 8.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.ts-empty__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid var(--ts-accent-border);
+  background: radial-gradient(circle at 50% 35%, rgba(77, 146, 73, 0.18), rgba(77, 146, 73, 0) 70%);
+}
+
+.ts-empty__mark {
+  font-weight: 800;
+  font-size: 2.4rem;
+  letter-spacing: 0.04em;
+  color: var(--ts-brass);
+}
+
+.ts-empty__title {
+  margin: 0;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ts-text);
+}
+
+.ts-empty__text {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--ts-muted);
+}
+
+.ts-empty__btn {
+  margin-top: 0.6rem;
+}
+
+/* Hide Dawn's default empty-cart heading if it lingers anywhere */
+.cart__warnings .cart__empty-text,
+.cart-drawer__empty-content > .cart__empty-text {
+  display: none;
+}
