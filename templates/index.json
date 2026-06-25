@@ -1,0 +1,133 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Top$hottas Select</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_8NJRi7": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Streetwear built for late nights and everyday rotation</strong>",
+            "text_style": "caption-with-letter-spacing"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text_8NJRi7"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/1.png",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-5",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_Vi8hKL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_A6kgiE": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Quiet fit.</em>",
+            "heading_size": "h2"
+          }
+        },
+        "heading_CULB7B": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Loud presence.</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_YNLUAf": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>Streetwear made for everyday motion and late nights. Built for the rotation.</em></p>"
+          }
+        },
+        "button_girtba": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the drop",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_A6kgiE",
+        "heading_CULB7B",
+        "text_YNLUAf",
+        "button_girtba"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "title": "Featured Drop",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-5",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "rich_text_Vi8hKL",
+    "featured_collection"
+  ]
+}
