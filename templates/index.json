@@ -13,7 +13,7 @@
       "type": "ts-hero",
       "settings": {
         "overlay_opacity": 45,
-        "height": "large",
+        "height": "medium",
         "alignment": "center",
         "eyebrow": "Top Shottas Select",
         "heading": "Streetwear for the rotation",
