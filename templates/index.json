@@ -9,40 +9,18 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Top$hottas Select</strong>",
-            "heading_size": "h2"
-          }
-        },
-        "text_8NJRi7": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Streetwear built for late nights and everyday rotation</strong>",
-            "text_style": "caption-with-letter-spacing"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text_8NJRi7"
-      ],
+    "ts_hero": {
+      "type": "ts-hero",
       "settings": {
-        "image": "shopify://shop_images/1.png",
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-5",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "overlay_opacity": 45,
+        "height": "large",
+        "alignment": "center",
+        "eyebrow": "Top Shottas Select",
+        "heading": "Streetwear for the rotation",
+        "subheading": "Heavyweight cotton. Boxy cuts. Limited drops.",
+        "button_label": "Shop the drop",
+        "button_link": "shopify://collections/all",
+        "color_scheme": "scheme-1"
       }
     },
     "rich_text_Vi8hKL": {
@@ -65,7 +43,7 @@
         "text_YNLUAf": {
           "type": "text",
           "settings": {
-            "text": "<p><em>Streetwear made for everyday motion and late nights. Built for the rotation.</em></p>"
+            "text": "<p>Heavyweight cotton, boxy cuts, and prints that hold up wash after wash. Every piece is a small batch — when a drop sells out, it’s gone.</p>"
           }
         },
         "button_girtba": {
@@ -100,34 +78,78 @@
       "type": "featured-collection",
       "settings": {
         "collection": "frontpage",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "title": "Featured Drop",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "solid",
+        "show_view_all": true,
+        "view_all_style": "outline",
         "color_scheme": "scheme-5",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": false,
+        "show_rating": true,
         "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 40
       }
+    },
+    "ts_trust": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_1": {
+          "type": "column",
+          "settings": {
+            "title": "Limited drops",
+            "text": "<p>Small batches, numbered runs. When it’s gone, it’s gone — no restocks.</p>"
+          }
+        },
+        "col_2": {
+          "type": "column",
+          "settings": {
+            "title": "Built to last",
+            "text": "<p>Heavyweight cotton and prints that don’t crack or fade in the wash.</p>"
+          }
+        },
+        "col_3": {
+          "type": "column",
+          "settings": {
+            "title": "Tracked shipping",
+            "text": "<p>Every order ships tracked, with easy returns if the fit isn’t right.</p>"
+          }
+        }
+      },
+      "block_order": ["col_1", "col_2", "col_3"],
+      "settings": {
+        "title": "Why Top$hottas",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "image_banner",
+    "ts_hero",
     "rich_text_Vi8hKL",
-    "featured_collection"
+    "featured_collection",
+    "ts_trust"
   ]
 }

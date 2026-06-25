@@ -1,0 +1,147 @@
+{% comment %}
+  Top$hottas hero — smoke background + glass editorial overlay.
+  Mirrors the mobile app hero (smoke atmosphere, eyebrow pill, big
+  headline, CTA). Background defaults to the bundled smoke asset but
+  can be overridden in the editor.
+{% endcomment %}
+
+<div
+  class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }}"
+  style="--ts-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+>
+  <div class="ts-hero__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2200
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2200',
+          class: 'ts-hero__img',
+          alt: section.settings.heading | strip_html | escape
+      }}
+    {%- else -%}
+      <img
+        class="ts-hero__img"
+        src="{{ 'ts-hero-smoke.jpg' | asset_url }}"
+        alt=""
+        width="2000"
+        height="1333"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- endif -%}
+  </div>
+
+  <div class="ts-hero__overlay" aria-hidden="true"></div>
+
+  <div class="ts-hero__content page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="ts-pill ts-hero__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h1 class="ts-hero__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="ts-hero__sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a
+        href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
+        class="button ts-hero__cta"
+      >
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top$hottas hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image",
+      "info": "Optional. Defaults to the bundled smoke background."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay darkness",
+      "default": 45
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content alignment",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Top Shottas Select"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for late nights and everyday rotation"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Heavyweight streetwear. Limited drops."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop the drop"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    { "name": "Top$hottas hero" }
+  ]
+}
+{% endschema %}

@@ -11,16 +11,14 @@ Priority key: **P0** = launch blocker · **P1** = high impact · **P2** = nice-t
 
 ## 1. Brand & design (this project's design passes)
 
-- [ ] **P1 — Rebuild the hero.** Replace the tee photo (which collides the
-      wordmark 3×) with the smoke background (`TS-Smoky1.mp4` / `thick-white-smoke.jpg`).
-      One strong headline, one CTA. Dawn: Image/Video banner section + our glass overlay.
-- [ ] **P1 — Make the glass material pay off.** Once smoke sits behind sections,
-      `.ts-glass` cards/blocks finally read as glass. Apply `.ts-glass` to hero meta,
-      featured cards, newsletter.
-- [ ] **P1 — Kill the duplicate tagline.** Hero and "Loud presence." currently say
-      the same thing. Keep one, rewrite the other (or cut it).
-- [ ] **P2 — Editorial hero meta** (eyebrow pill + stat chip) to match app `heroCard`.
-      Use `.ts-pill`. Small custom section or Dawn banner blocks.
+- [x] **P1 — Rebuild the hero.** DONE — custom `sections/ts-hero.liquid` with
+      compressed smoke background (`assets/ts-hero-smoke.jpg`, 97KB), glass overlay,
+      green glow, one headline + CTA. Wordmark collision removed.
+- [x] **P1 — Make the glass material pay off.** DONE — green CTA + glass pill now
+      read correctly over the smoke. (Glass still subtle on flat sections below the fold.)
+- [x] **P1 — Kill the duplicate tagline.** DONE — rich-text paragraph rewritten so it
+      no longer repeats the hero line.
+- [x] **P2 — Editorial hero meta** — eyebrow `.ts-pill` done. (Stat chip still optional.)
 - [ ] **P2 — Confirm corner radius / button strength** (16px corners, translucent CTA)
       read the way you want vs. the app.
 - [ ] **P2 — Custom 404 + cart-empty states** styled like the app's info cards.
@@ -29,8 +27,11 @@ Priority key: **P0** = launch blocker · **P1** = high impact · **P2** = nice-t
 
 - [ ] **P0 — Add real products.** One product reads as "not open." Even 4–8 SKUs
       (or variants/colorways) changes perception. Shopify: Products admin.
-- [ ] **P1 — Featured collection as a carousel/grid** instead of a single product.
-      Dawn: Featured collection section (slider mode).
+- [x] **P1 — Featured collection as a carousel/grid** — DONE — slider enabled,
+      shows up to 8, "View all" + ratings on (ratings appear once a reviews app is added).
+      Populates as you add products.
+- [x] **P1 — Added a "Why Top$hottas" trust row** (multicolumn) so the page no longer
+      looks empty without a full catalog.
 - [ ] **P1 — Collections** (e.g. Tees, Hoodies, New, Sale) for browsing + nav.
       Shopify: Collections (smart/manual) → add to header menu.
 - [ ] **P2 — "Lookbook"/collage section** for lifestyle imagery. Dawn: Collage / Multicolumn.

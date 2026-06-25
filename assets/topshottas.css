@@ -338,3 +338,109 @@ hr,
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
 }
+
+/* ============================================================
+ * PASS 4 — Top$hottas hero (sections/ts-hero.liquid)
+ * Smoke background + green glow + glass editorial overlay.
+ * ============================================================ */
+.ts-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ts-hero--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.ts-hero--left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.ts-hero--small {
+  min-height: 56vh;
+}
+.ts-hero--medium {
+  min-height: 72vh;
+}
+.ts-hero--large {
+  min-height: 88vh;
+}
+
+.ts-hero__media,
+.ts-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.ts-hero__img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark gradient for legibility + the app's green corner glow */
+.ts-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 55% at 82% 12%, rgba(77, 146, 73, 0.28), rgba(77, 146, 73, 0) 70%),
+    linear-gradient(
+      180deg,
+      rgba(4, 8, 5, calc(var(--ts-hero-overlay) * 0.7)) 0%,
+      rgba(4, 8, 5, calc(var(--ts-hero-overlay) * 0.5)) 45%,
+      rgba(4, 8, 5, 0.96) 100%
+    );
+}
+
+.ts-hero__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-top: 6rem;
+  padding-bottom: 7rem;
+  max-width: 76rem;
+}
+
+.ts-hero--center .ts-hero__content {
+  align-items: center;
+}
+
+.ts-hero__eyebrow {
+  color: var(--ts-brass);
+}
+
+.ts-hero__heading {
+  margin: 0;
+  font-size: clamp(3.6rem, 7vw, 6.4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ts-text);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
+}
+
+.ts-hero__sub {
+  margin: 0;
+  max-width: 52rem;
+  font-size: clamp(1.5rem, 1.8vw, 1.8rem);
+  line-height: 1.6;
+  color: var(--ts-muted);
+}
+
+.ts-hero__cta {
+  margin-top: 0.8rem;
+  align-self: center;
+}
+
+.ts-hero--left .ts-hero__cta {
+  align-self: flex-start;
+}
