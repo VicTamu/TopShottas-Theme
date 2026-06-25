@@ -22,6 +22,22 @@
           class: 'ts-hero__img',
           alt: section.settings.heading | strip_html | escape
       }}
+    {%- elsif section.settings.enable_video -%}
+      {%- comment -%} Animated smoke — mirrors the app (TS-Smoky2.mp4: loop, muted, autoplay, cover, normal speed, opacity 0.5). JPG is the instant poster. {%- endcomment -%}
+      <video
+        class="ts-hero__img ts-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="{{ 'ts-hero-smoke.jpg' | asset_url }}"
+        aria-hidden="true"
+        tabindex="-1"
+        disableremoteplayback
+      >
+        <source src="{{ 'ts-hero-smoke.mp4' | asset_url }}" type="video/mp4">
+      </video>
     {%- else -%}
       <img
         class="ts-hero__img"
@@ -71,7 +87,14 @@
       "type": "image_picker",
       "id": "image",
       "label": "Background image",
-      "info": "Optional. Defaults to the bundled smoke background."
+      "info": "Optional. Overrides the animated smoke. Leave empty to use smoke."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video",
+      "label": "Animated smoke background",
+      "info": "Plays the looping smoke video (muted). Falls back to a still image if off or unsupported.",
+      "default": true
     },
     {
       "type": "range",

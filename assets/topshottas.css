@@ -385,6 +385,25 @@ hr,
   object-position: center;
 }
 
+/* Animated smoke video — app parity: opacity 0.5 (see TS-Smoky2.mp4 usage).
+   Respect reduced-motion: fall back to the static poster frame. */
+.ts-hero__video {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-hero__video {
+    display: none;
+  }
+  .ts-hero__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #040805 url('ts-hero-smoke.jpg') center / cover no-repeat;
+    opacity: 0.5;
+  }
+}
+
 /* Dark gradient for legibility + the app's green corner glow */
 .ts-hero__overlay {
   position: absolute;
