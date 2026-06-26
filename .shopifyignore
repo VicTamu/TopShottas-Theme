@@ -1,0 +1,6 @@
+# Ignore editor atomic-save temp files. Without this, the theme dev
+# file-watcher uploads transient "*.tmp.<pid>.<hash>" files it then can't
+# delete (illegal filename), jamming the dev theme with a 500 error.
+/\.tmp\./
+*.tmp
+*~

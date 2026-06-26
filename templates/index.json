@@ -17,7 +17,7 @@
         "alignment": "center",
         "eyebrow": "Top Shottas Select",
         "heading": "Streetwear for the rotation",
-        "subheading": "Heavyweight cotton. Boxy cuts. Limited drops.",
+        "subheading": "",
         "button_label": "Shop the drop",
         "button_link": "shopify://collections/all",
         "color_scheme": "scheme-1"
@@ -43,26 +43,14 @@
         "text_YNLUAf": {
           "type": "text",
           "settings": {
-            "text": "<p>Heavyweight cotton, boxy cuts, and prints that hold up wash after wash. Every piece is a small batch — when a drop sells out, it’s gone.</p>"
-          }
-        },
-        "button_girtba": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop the drop",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>Clean silhouettes with the volume turned up. The kind of pieces you reach for first and retire last — worn in, never worn out.</p>"
           }
         }
       },
       "block_order": [
         "heading_A6kgiE",
         "heading_CULB7B",
-        "text_YNLUAf",
-        "button_girtba"
+        "text_YNLUAf"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
