@@ -669,3 +669,62 @@ hr,
 .cart-count-bubble span {
   color: #040805;
 }
+
+/* ============================================================
+ * PASS 8 — Unified section headers + trust-row icons
+ * ============================================================ */
+
+/* A short gold accent rule above every section title for cohesion */
+.collection__title.title-wrapper .title,
+.multicolumn__title .title,
+.rich-text__heading.title {
+  position: relative;
+  padding-top: 1.8rem;
+}
+
+.collection__title.title-wrapper .title::before,
+.multicolumn__title .title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.2rem;
+  height: 2px;
+  background: var(--ts-gold);
+}
+
+/* Center the rule when the section title is centered */
+.collection__title.center .title::before,
+.multicolumn__title.center .title::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Line-icons for the "Why Top$hottas" trust row (no image uploads needed).
+   Targeted by section id suffix so column order is safe. */
+[id$='__ts_trust'] .multicolumn-card__info::before {
+  content: '';
+  display: block;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0 auto 1.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.95;
+}
+
+/* 1) Limited drops — lightning */
+[id$='__ts_trust'] .multicolumn-list__item:nth-child(1) .multicolumn-card__info::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2a96d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M13 3L5 13h6l-2 8 8-11h-6z'/></svg>");
+}
+
+/* 2) Built to last — shield with check */
+[id$='__ts_trust'] .multicolumn-list__item:nth-child(2) .multicolumn-card__info::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2a96d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z'/><path d='M9 12l2 2 4-4'/></svg>");
+}
+
+/* 3) Tracked shipping — truck */
+[id$='__ts_trust'] .multicolumn-list__item:nth-child(3) .multicolumn-card__info::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2a96d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6h11v9H3z'/><path d='M14 9h4l3 3v3h-7z'/><circle cx='7.5' cy='17.5' r='1.6'/><circle cx='17' cy='17.5' r='1.6'/></svg>");
+}
