@@ -905,3 +905,29 @@ html {
 .ts-lookbook__cta {
   margin-top: 0.6rem;
 }
+
+/* ============================================================
+ * PASS 12 — Footer arrangement: newsletter as a centered band
+ * (was stranded bottom-left). Duplicate social removed via settings.
+ * ============================================================ */
+.footer-block--newsletter {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--ts-hairline);
+  text-align: center;
+}
+
+.footer-block--newsletter .footer-block__heading {
+  text-align: center;
+}
+
+.footer-block__newsletter {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+/* Center the glass newsletter field within the band */
+.footer__newsletter {
+  margin: 1.6rem auto 0;
+  max-width: 44rem;
+}
