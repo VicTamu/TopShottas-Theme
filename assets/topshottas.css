@@ -611,3 +611,61 @@ hr,
 .cart-drawer__empty-content > .cart__empty-text {
   display: none;
 }
+
+/* ============================================================
+ * PASS 7 — Glass sticky header, animated nav underline, cart bubble
+ * ============================================================ */
+
+/* Frosted translucent header so content scrolls under it (app top-bar feel).
+   .gradient compound selector beats Dawn's opaque scheme background. */
+.header-wrapper.gradient {
+  background: rgba(4, 8, 5, 0.72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.shopify-section-header-sticky .header-wrapper.gradient {
+  background: rgba(4, 8, 5, 0.84);
+}
+
+/* Animated gold underline on desktop nav (replaces Dawn's text underline) */
+.header__inline-menu .header__menu-item {
+  position: relative;
+}
+
+.header__inline-menu .header__menu-item::after {
+  content: '';
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 0.2rem;
+  height: 1.5px;
+  background: var(--ts-gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s var(--ts-ease);
+}
+
+.header__inline-menu .header__menu-item:hover::after,
+.header__inline-menu .header__menu-item[aria-current]::after {
+  transform: scaleX(1);
+}
+
+.header__inline-menu .header__menu-item:hover {
+  text-decoration: none;
+}
+
+/* Dawn underlines the current page via this span; we use the animated bar */
+.header__active-menu-item {
+  text-decoration: none;
+}
+
+/* Cart count bubble in brand gold */
+.cart-count-bubble {
+  background: var(--ts-gold);
+}
+
+.cart-count-bubble,
+.cart-count-bubble span {
+  color: #040805;
+}
