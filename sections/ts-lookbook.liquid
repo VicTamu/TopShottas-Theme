@@ -1,0 +1,78 @@
+{% comment %}
+  Top$hottas lookbook — editorial image + text break.
+  Uses a bundled product/lifestyle shot by default (swappable in editor).
+{% endcomment %}
+
+<div class="ts-lookbook color-{{ section.settings.color_scheme }} ts-lookbook--{{ section.settings.layout }} page-width section-{{ section.id }}-padding">
+  <div class="ts-lookbook__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600', class: 'ts-lookbook__img'
+      }}
+    {%- else -%}
+      <img class="ts-lookbook__img" src="{{ 'ts-lookbook.jpg' | asset_url }}" alt="" width="1600" height="2031" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <div class="ts-lookbook__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="ts-pill">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="ts-lookbook__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="ts-lookbook__text rte">{{ section.settings.text }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="button ts-lookbook__cta">
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Top$hottas lookbook",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Optional. Defaults to the bundled product shot." },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        { "value": "image-first", "label": "Left" },
+        { "value": "image-second", "label": "Right" }
+      ],
+      "default": "image-first"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Lookbook" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Worn in. Never worn out." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Boxy cuts, heavyweight cotton, and prints with a story. Shot in the smoke — built for the everyday rotation.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the drop" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "presets": [{ "name": "Top$hottas lookbook" }]
+}
+{% endschema %}

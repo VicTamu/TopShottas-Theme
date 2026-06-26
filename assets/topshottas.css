@@ -423,7 +423,7 @@ hr,
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2.4rem;
   padding-top: 6rem;
   padding-bottom: 7rem;
   max-width: 76rem;
@@ -440,7 +440,7 @@ hr,
 .ts-hero__heading {
   margin: 0;
   font-size: clamp(3.6rem, 7vw, 6.4rem);
-  line-height: 1.02;
+  line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ts-text);
@@ -846,4 +846,62 @@ html {
   .ts-hero__scroll {
     animation: none;
   }
+}
+
+/* ============================================================
+ * PASS 11 — Lookbook editorial section (sections/ts-lookbook.liquid)
+ * ============================================================ */
+.ts-lookbook {
+  display: grid;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+@media screen and (min-width: 750px) {
+  .ts-lookbook {
+    grid-template-columns: 1fr 1fr;
+    gap: 4.8rem;
+  }
+  .ts-lookbook--image-second .ts-lookbook__media {
+    order: 2;
+  }
+}
+
+.ts-lookbook__media {
+  border-radius: 1.8rem;
+  overflow: hidden;
+  border: 1px solid var(--ts-hairline);
+}
+
+.ts-lookbook__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ts-lookbook__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  max-width: 46rem;
+}
+
+.ts-lookbook__heading {
+  margin: 0;
+  font-size: clamp(2.6rem, 4vw, 4rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ts-text);
+}
+
+.ts-lookbook__text {
+  color: var(--ts-muted);
+  line-height: 1.65;
+}
+
+.ts-lookbook__cta {
+  margin-top: 0.6rem;
 }
