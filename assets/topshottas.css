@@ -728,3 +728,82 @@ hr,
 [id$='__ts_trust'] .multicolumn-list__item:nth-child(3) .multicolumn-card__info::before {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2a96d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6h11v9H3z'/><path d='M14 9h4l3 3v3h-7z'/><circle cx='7.5' cy='17.5' r='1.6'/><circle cx='17' cy='17.5' r='1.6'/></svg>");
 }
+
+/* ============================================================
+ * PASS 9 — Footer rebuild polish + back-to-top
+ * ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+.footer {
+  border-top: 1px solid var(--ts-hairline);
+}
+
+/* Footer column headings as brass eyebrows */
+.footer-block__heading {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ts-brass);
+}
+
+/* Footer links: muted -> gold on hover */
+.footer-block__details-content .list-menu__item,
+.footer__list-social .list-social__link {
+  color: var(--ts-muted);
+  transition: color 0.2s var(--ts-ease);
+}
+
+.footer-block__details-content .list-menu__item:hover {
+  color: var(--ts-gold);
+}
+
+/* Glass newsletter block */
+.footer__newsletter {
+  padding: 2.4rem;
+  border: 1px solid var(--ts-hairline);
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* Payment icons + bottom bar a touch calmer */
+.footer__payment {
+  opacity: 0.8;
+}
+
+/* Back-to-top button (glass pill, shows after scrolling) */
+.ts-to-top {
+  position: fixed;
+  right: 1.8rem;
+  bottom: 1.8rem;
+  z-index: 5;
+  width: 4.4rem;
+  height: 4.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ts-accent-border);
+  border-radius: 999px;
+  background: rgba(4, 8, 5, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--ts-gold);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ts-ease), transform 0.3s var(--ts-ease), background-color 0.2s var(--ts-ease);
+}
+
+.ts-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ts-to-top:hover {
+  background: rgba(77, 146, 73, 0.4);
+}
