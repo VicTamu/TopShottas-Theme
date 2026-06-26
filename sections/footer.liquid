@@ -101,6 +101,9 @@
                         {%- endfor -%}
                       </ul>
                     {%- endif -%}
+                    {%- if section.settings.show_social and has_social_icons -%}
+                      {%- render 'social-icons', class: 'footer__list-social footer-block__social' -%}
+                    {%- endif -%}
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info">
                       {%- if settings.brand_image != blank -%}
@@ -240,10 +243,6 @@
             <div class="footer__follow-on-shop">
               {{ shop | login_button: action: 'follow' }}
             </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_social and has_social_icons -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
           {%- endif -%}
         </div>
       </div>

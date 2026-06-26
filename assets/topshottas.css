@@ -931,3 +931,65 @@ html {
   margin: 1.6rem auto 0;
   max-width: 44rem;
 }
+
+/* ============================================================
+ * PASS 13 — Footer reflow: tagline -> trust section; columns become
+ * Explore (+social) | Newsletter | Customer care
+ * ============================================================ */
+
+/* Tagline moved to the bottom of "Why Top$hottas" (match old footer look) */
+.multicolumn__footer-text {
+  margin: 4rem auto 0;
+  text-align: center;
+  color: var(--ts-muted);
+  font-size: 1.5rem;
+}
+
+/* Social icons now live in the Explore column */
+.footer-block__social {
+  margin-top: 1.6rem;
+}
+
+@media screen and (min-width: 990px) {
+  /* Lay the three footer pieces out as one aligned row */
+  .footer__content-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4.8rem;
+    align-items: start;
+  }
+  .footer__blocks-wrapper {
+    display: contents;
+  }
+  .footer-block--menu {
+    order: 1; /* Explore — left */
+  }
+  .footer-block--newsletter {
+    order: 2; /* Newsletter — center */
+  }
+  .footer__content-top .footer-block:not(.footer-block--menu):not(.footer-block--newsletter) {
+    order: 3; /* Customer care — right */
+  }
+
+  /* Undo the mobile "band" treatment when newsletter is a column */
+  .footer-block--newsletter {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    text-align: left;
+  }
+  .footer-block--newsletter .footer-block__heading {
+    text-align: left;
+  }
+  .footer-block__newsletter {
+    max-width: none;
+    margin: 0;
+  }
+  .footer__newsletter {
+    margin: 1.6rem 0 0;
+    max-width: none;
+  }
+  .footer-block__social {
+    justify-content: flex-start;
+  }
+}

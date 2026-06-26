@@ -187,6 +187,9 @@
         </a>
       {%- endif -%}
     </div>
+    {%- if section.settings.footer_text != blank -%}
+      <div class="multicolumn__footer-text rte">{{ section.settings.footer_text }}</div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -204,6 +207,11 @@
       "id": "title",
       "default": "t:sections.multicolumn.settings.title.default",
       "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer text (below columns)"
     },
     {
       "type": "select",

@@ -132,6 +132,7 @@
       "block_order": ["col_1", "col_2", "col_3"],
       "settings": {
         "title": "Why Top$hottas",
+        "footer_text": "<p>Independent streetwear. Limited drops, built for the everyday rotation.</p>",
         "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",

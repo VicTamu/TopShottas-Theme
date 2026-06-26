@@ -14,12 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "brand": {
-          "type": "brand_information",
-          "settings": {
-            "show_social": true
-          }
-        },
         "explore": {
           "type": "link_list",
           "settings": {
@@ -35,13 +29,13 @@
           }
         }
       },
-      "block_order": ["brand", "explore", "care"],
+      "block_order": ["explore", "care"],
       "settings": {
         "color_scheme": "scheme-5",
         "newsletter_enable": true,
         "newsletter_heading": "Join the Top$hotta Fam!",
         "enable_follow_on_shop": false,
-        "show_social": false,
+        "show_social": true,
         "enable_country_selector": true,
         "enable_language_selector": false,
         "payment_enable": true,
