@@ -951,45 +951,52 @@ html {
 }
 
 @media screen and (min-width: 990px) {
-  /* Lay the three footer pieces out as one aligned row */
-  .footer__content-top {
+  /* Lay the three footer pieces out as one aligned row.
+     Selectors are scoped under .footer to beat section-footer.css,
+     which sets `.footer__content-top { display: block }` and loads after us. */
+  .footer .footer__content-top {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4.8rem;
     align-items: start;
   }
-  .footer__blocks-wrapper {
+  .footer .footer__blocks-wrapper {
     display: contents;
   }
-  .footer-block--menu {
+  /* Dawn's .grid__item carries a width: calc(25%...) from the old grid class;
+     override so each block fills its 1fr track instead of staying narrow. */
+  .footer .footer__content-top .footer-block {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  .footer .footer-block--menu {
     order: 1; /* Explore — left */
   }
-  .footer-block--newsletter {
+  .footer .footer-block--newsletter {
     order: 2; /* Newsletter — center */
-  }
-  .footer__content-top .footer-block:not(.footer-block--menu):not(.footer-block--newsletter) {
-    order: 3; /* Customer care — right */
-  }
-
-  /* Undo the mobile "band" treatment when newsletter is a column */
-  .footer-block--newsletter {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
     text-align: left;
   }
-  .footer-block--newsletter .footer-block__heading {
+  .footer .footer__content-top .footer-block:not(.footer-block--menu):not(.footer-block--newsletter) {
+    order: 3; /* Customer care — right */
+  }
+
+  /* Undo the mobile "band" treatment when newsletter is a column */
+  .footer .footer-block--newsletter .footer-block__heading {
     text-align: left;
   }
-  .footer-block__newsletter {
+  .footer .footer-block__newsletter {
     max-width: none;
     margin: 0;
   }
-  .footer__newsletter {
+  .footer .footer__newsletter {
     margin: 1.6rem 0 0;
     max-width: none;
   }
-  .footer-block__social {
+  .footer .footer-block__social {
     justify-content: flex-start;
   }
 }
