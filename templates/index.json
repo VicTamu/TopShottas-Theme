@@ -39,18 +39,11 @@
             "heading": "<strong>Loud presence.</strong>",
             "heading_size": "h1"
           }
-        },
-        "text_YNLUAf": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Clean silhouettes with the volume turned up. The kind of pieces you reach for first and retire last — worn in, never worn out.</p>"
-          }
         }
       },
       "block_order": [
         "heading_A6kgiE",
-        "heading_CULB7B",
-        "text_YNLUAf"
+        "heading_CULB7B"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
