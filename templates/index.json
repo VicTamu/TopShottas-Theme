@@ -60,6 +60,7 @@
       "settings": {
         "collection": "frontpage",
         "products_to_show": 8,
+        "coming_soon_count": 2,
         "title": "Featured Drop",
         "heading_size": "h2",
         "description": "",
@@ -89,7 +90,7 @@
         "layout": "image-first",
         "eyebrow": "Lookbook",
         "heading": "Worn in. Never worn out.",
-        "text": "<p>Boxy cuts, heavyweight cotton, and prints with a story. Shot in the smoke — built for the everyday rotation.</p>",
+        "text": "<p>Boxy cuts, heavyweight cotton, and prints with a story — shot in the smoke.</p>",
         "button_label": "Shop the drop",
         "button_link": "shopify://collections/all",
         "color_scheme": "scheme-1",

@@ -133,6 +133,13 @@
               {%- assign skip_card_product_styles = true -%}
             {%- endfor -%}
           {% endpaginate %}
+          {%- if section.settings.coming_soon_count > 0 -%}
+            {%- for i in (1..section.settings.coming_soon_count) -%}
+              <li class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}">
+                {% render 'ts-soon-card' %}
+              </li>
+            {%- endfor -%}
+          {%- endif -%}
         {%- else -%}
           {%- for i in (1..section.settings.columns_desktop) -%}
             <li
@@ -236,7 +243,17 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.featured-collection.settings.products_to_show.label"
-    },     
+    },
+    {
+      "type": "range",
+      "id": "coming_soon_count",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "default": 0,
+      "label": "“Drops soon” placeholder cards",
+      "info": "Adds placeholder cards after your products to fill the row."
+    },
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header_text.content"

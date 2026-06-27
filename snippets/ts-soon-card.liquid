@@ -1,0 +1,26 @@
+{% comment %}
+  "Drops soon" placeholder card — visually matches the product cards in a
+  featured collection grid (glass card, square media, heading).
+{% endcomment %}
+<div class="card-wrapper product-card-wrapper">
+  <div class="card card--card card--media ts-soon-card color-{{ settings.card_color_scheme }} gradient">
+    <div class="card__inner ratio" style="--ratio-percent: 100%;">
+      <div class="card__media">
+        <div class="media media--transparent media--square">
+          <img
+            src="{{ 'ts-drops-soon.jpg' | asset_url }}"
+            alt="Drops soon"
+            width="900"
+            height="900"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card__content">
+      <div class="card__information">
+        <h3 class="card__heading">Drops Soon</h3>
+      </div>
+    </div>
+  </div>
+</div>
