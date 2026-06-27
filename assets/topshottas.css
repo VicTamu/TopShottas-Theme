@@ -819,10 +819,23 @@ html {
   bottom: 2.4rem;
   transform: translateX(-50%);
   z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--ts-brass);
   opacity: 0.85;
+  cursor: pointer;
   animation: tsHeroBob 2s var(--ts-ease) infinite;
-  pointer-events: none;
+  transition: color 0.2s var(--ts-ease), opacity 0.2s var(--ts-ease);
+}
+
+.ts-hero__scroll:hover {
+  color: var(--ts-gold);
+  opacity: 1;
 }
 
 @keyframes tsHeroBob {
