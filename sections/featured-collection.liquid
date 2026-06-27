@@ -134,9 +134,17 @@
             {%- endfor -%}
           {% endpaginate %}
           {%- if section.settings.coming_soon_count > 0 -%}
+            {%- assign soon_names = section.settings.coming_soon_names | split: ',' -%}
             {%- for i in (1..section.settings.coming_soon_count) -%}
-              <li class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}">
-                {% render 'ts-soon-card' %}
+              {%- assign soon_name = soon_names[forloop.index0] | default: 'Drops Soon' | strip -%}
+              <li
+                class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ section.settings.products_to_show | plus: forloop.index }};"
+                {% endif %}
+              >
+                {% render 'ts-soon-card', name: soon_name %}
               </li>
             {%- endfor -%}
           {%- endif -%}
@@ -253,6 +261,13 @@
       "default": 0,
       "label": "“Drops soon” placeholder cards",
       "info": "Adds placeholder cards after your products to fill the row."
+    },
+    {
+      "type": "text",
+      "id": "coming_soon_names",
+      "label": "“Drops soon” card names",
+      "info": "Comma-separated, one per placeholder card.",
+      "default": "Smoke Logo Tee, Sunset Logo Tee"
     },
     {
       "type": "header",

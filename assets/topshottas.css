@@ -1043,15 +1043,42 @@ html {
   max-height: 44rem;
 }
 
-/* Drops Soon placeholder cards */
-.ts-soon-card {
-  opacity: 0.9;
+/* Drops Soon placeholder cards — mirror the real product card.
+   Keep the inert "Choose options" button readable (not greyed). */
+.ts-soon-card__btn:disabled,
+.ts-soon-card__btn[disabled] {
+  opacity: 0.8;
+  cursor: default;
+  transform: none;
 }
-.ts-soon-card .card__heading {
-  color: var(--ts-brass);
-  font-weight: 700;
+.ts-soon-card__btn:disabled:hover,
+.ts-soon-card__btn[disabled]:hover {
+  transform: none;
 }
-.ts-soon-card .card__heading a,
-.ts-soon-card .card__heading {
-  pointer-events: none;
+
+/* Stretch the placeholder card to the cell height and pin its "Choose options"
+   button to the bottom so it lines up with the real card's quick-add. */
+.ts-soon-wrapper .card.ts-soon-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ts-soon-card > .card__inner {
+  flex: 0 0 auto;
+}
+.ts-soon-card > .card__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.ts-soon-card > .card__content .quick-add {
+  margin-top: auto;
+}
+
+/* Spread Featured Drop cards across the full row when they don't fill it
+   (e.g. 1 product + 2 "drops soon" placeholders), keeping cards smaller. */
+@media screen and (min-width: 990px) {
+  [id$='__featured_collection'] .product-grid:not(.slider) {
+    justify-content: space-between;
+  }
 }

@@ -1,15 +1,17 @@
 {% comment %}
-  "Drops soon" placeholder card — visually matches the product cards in a
-  featured collection grid (glass card, square media, heading).
+  "Drops soon" placeholder card — mirrors a real product card's structure
+  (same card grid: media, information, quick-add at row 4) so it lines up
+  with real cards. Inert. Param: name (product name)
 {% endcomment %}
-<div class="card-wrapper product-card-wrapper">
+{%- assign soon_name = name | default: 'Drops Soon' -%}
+<div class="card-wrapper product-card-wrapper underline-links-hover ts-soon-wrapper">
   <div class="card card--card card--media ts-soon-card color-{{ settings.card_color_scheme }} gradient">
     <div class="card__inner ratio" style="--ratio-percent: 100%;">
       <div class="card__media">
         <div class="media media--transparent media--square">
           <img
             src="{{ 'ts-drops-soon.jpg' | asset_url }}"
-            alt="Drops soon"
+            alt="{{ soon_name | escape }}"
             width="900"
             height="900"
             loading="lazy"
@@ -19,7 +21,24 @@
     </div>
     <div class="card__content">
       <div class="card__information">
-        <h3 class="card__heading">Drops Soon</h3>
+        <h3 class="card__heading">{{ soon_name }}</h3>
+        <div class="card-information">
+          <span class="price">
+            <span class="price__regular">
+              <span class="price-item price-item--regular">$0.00</span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="quick-add">
+        <button
+          class="quick-add__submit button button--full-width button--secondary ts-soon-card__btn"
+          type="button"
+          aria-disabled="true"
+          disabled
+        >
+          Choose options
+        </button>
       </div>
     </div>
   </div>
