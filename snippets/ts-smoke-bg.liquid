@@ -1,0 +1,24 @@
+{% comment %}
+  Site-wide smoke backdrop — a fixed, muted, looping video behind the whole
+  page (mirrors the app's background layer: smoke at ~0.5 opacity + dark tint).
+  Reuses the hero video asset, so no extra download. Toggle via
+  Theme settings -> Top$hottas -> Site-wide smoke background.
+{% endcomment %}
+{%- if settings.site_smoke_enabled -%}
+  <div class="ts-smoke-bg" aria-hidden="true">
+    <video
+      class="ts-smoke-bg__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="{{ 'ts-hero-smoke.jpg' | asset_url }}"
+      tabindex="-1"
+      disableremoteplayback
+    >
+      <source src="{{ 'ts-hero-smoke.mp4' | asset_url }}" type="video/mp4">
+    </video>
+    <div class="ts-smoke-bg__tint"></div>
+  </div>
+{%- endif -%}

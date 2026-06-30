@@ -1082,3 +1082,90 @@ html {
     justify-content: space-between;
   }
 }
+
+/* ============================================================
+ * PASS 15 — App-style add-to-cart toast (Dawn cart-notification)
+ * Green-glass toast with a checkmark, mirroring the app cartToast.
+ * ============================================================ */
+.cart-notification {
+  background: rgba(16, 32, 19, 0.92);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--ts-accent-border);
+  border-radius: 1.6rem;
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.45);
+  color: var(--ts-text);
+}
+
+.cart-notification__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--ts-text);
+}
+
+.cart-notification__heading svg,
+.cart-notification__heading .svg-wrapper {
+  color: var(--ts-sage);
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.cart-notification-product__name,
+.cart-notification__heading {
+  color: var(--ts-text);
+}
+
+.cart-notification-product__option {
+  color: var(--ts-muted);
+}
+
+/* Brand the toast actions */
+.cart-notification__links .button--primary {
+  background-color: var(--ts-primary-fill);
+}
+
+/* ============================================================
+ * PASS 16 — Site-wide smoke backdrop (snippets/ts-smoke-bg.liquid)
+ * Fixed muted video behind everything (app background layer:
+ * ~0.5 opacity + rgba(1,4,2,0.58) tint). Content sections go
+ * transparent so the smoke shows through and glass cards frost
+ * over real motion. Scoped to .ts-smoke-on; overlays/header keep
+ * their own surfaces for legibility.
+ * ============================================================ */
+.ts-smoke-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background: #040805;
+}
+
+.ts-smoke-bg__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.ts-smoke-bg__tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 4, 2, 0.58);
+}
+
+/* Let the fixed smoke show through page content + footer (not header/overlays) */
+.ts-smoke-on #MainContent .gradient,
+.ts-smoke-on #MainContent .color-scheme-1,
+.ts-smoke-on #MainContent .color-scheme-5,
+.ts-smoke-on .footer.gradient {
+  background-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-smoke-bg__video {
+    display: none;
+  }
+}

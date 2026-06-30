@@ -1471,6 +1471,17 @@
         "label": "Free shipping threshold",
         "info": "Order subtotal (in store currency) needed to unlock free shipping.",
         "default": 75
+      },
+      {
+        "type": "header",
+        "content": "Atmosphere"
+      },
+      {
+        "type": "checkbox",
+        "id": "site_smoke_enabled",
+        "label": "Site-wide smoke background",
+        "info": "Plays the muted smoke video behind the whole site (mirrors the app).",
+        "default": true
       }
     ]
   }
