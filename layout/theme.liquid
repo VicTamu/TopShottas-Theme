@@ -332,11 +332,31 @@
     <script>
       (function () {
         var rate = 0.7;
-        document.querySelectorAll('.ts-hero__video, .ts-smoke-bg__video').forEach(function (v) {
-          var apply = function () { try { v.playbackRate = rate; } catch (e) {} };
-          apply();
-          v.addEventListener('loadedmetadata', apply);
-          v.addEventListener('play', apply);
+        var KEY = 'tsSmokeTime';
+        var vids = document.querySelectorAll('.ts-hero__video, .ts-smoke-bg__video');
+        function apply(v) { try { v.playbackRate = rate; } catch (e) {} }
+        function resume(v) {
+          var t = parseFloat(sessionStorage.getItem(KEY));
+          if (!isNaN(t) && isFinite(v.duration) && v.duration > 0) {
+            try { v.currentTime = t % v.duration; } catch (e) {}
+          }
+          apply(v);
+        }
+        vids.forEach(function (v) {
+          if (v.readyState >= 1) { resume(v); }
+          else { v.addEventListener('loadedmetadata', function () { resume(v); }); }
+          v.addEventListener('play', function () { apply(v); });
+        });
+        function save() {
+          var v = vids[0];
+          if (v && !isNaN(v.currentTime) && v.currentTime > 0) {
+            try { sessionStorage.setItem(KEY, v.currentTime); } catch (e) {}
+          }
+        }
+        setInterval(save, 1000);
+        window.addEventListener('pagehide', save);
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'hidden') { save(); }
         });
       })();
     </script>
