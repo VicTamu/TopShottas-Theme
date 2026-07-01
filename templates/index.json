@@ -12,14 +12,21 @@
     "ts_hero": {
       "type": "ts-hero",
       "settings": {
+        "logo_max_width": 660,
+        "enable_video": true,
+        "smoke_opacity": 62,
         "overlay_opacity": 45,
-        "height": "medium",
+        "height": "large",
         "alignment": "center",
-        "eyebrow": "Top Shottas Select",
-        "heading": "Streetwear for the rotation",
-        "subheading": "",
-        "button_label": "Shop the drop",
-        "button_link": "shopify://collections/all",
+        "eyebrow": "VOL. 01",
+        "heading": "Top$hottas",
+        "subheading": "Premium streetwear. List members shop Vol. 01 first — 24h before it's public.",
+        "email_button_label": "GET EARLY ACCESS",
+        "email_note": "First access to the drop. No spam.",
+        "email_success": "YOU'RE IN — YOU SHOP THE DROP FIRST.",
+        "show_marquee": true,
+        "marquee_text": "TOP$HOTTAS · WHERE THERE'S SMOKE... · VOL.01 · SMOKE SEASON · EST. 2026",
+        "show_scroll_cue": true,
         "color_scheme": "scheme-1"
       }
     },

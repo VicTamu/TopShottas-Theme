@@ -1,29 +1,29 @@
 {% comment %}
-  Top$hottas hero — smoke background + glass editorial overlay.
-  Mirrors the mobile app hero (smoke atmosphere, eyebrow pill, big
-  headline, CTA). Background defaults to the bundled smoke asset but
-  can be overridden in the editor.
+  Top$hottas hero — "Centered Monument".
+  Smoke background (video + poster, reduced-motion safe) · glass eyebrow pill ·
+  wordmark logo centerpiece (picker or bundled asset; real <h1> kept for SEO) ·
+  body sentence · early-access email capture (Dawn customer form) · marquee.
+  Fully theme-editor editable via {% schema %} below.
 {% endcomment %}
 
+{%- liquid
+  assign smoke_opacity = section.settings.smoke_opacity | default: 62
+  assign overlay = section.settings.overlay_opacity | default: 45
+  assign heading_text = section.settings.heading | default: shop.name
+-%}
+
 <div
-  class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }}"
-  style="--ts-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }}; --ts-smoke-opacity: {{ section.settings.smoke_opacity | divided_by: 100.0 }};"
+  class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} ts-hero--monument color-{{ section.settings.color_scheme }}"
+  style="--ts-hero-overlay: {{ overlay | divided_by: 100.0 }}; --ts-smoke-opacity: {{ smoke_opacity | divided_by: 100.0 }}; --ts-logo-max: {{ section.settings.logo_max_width | default: 660 }}px;"
 >
   <div class="ts-hero__media">
     {%- if section.settings.image != blank -%}
       {{
         section.settings.image
         | image_url: width: 2200
-        | image_tag:
-          loading: 'eager',
-          fetchpriority: 'high',
-          sizes: '100vw',
-          widths: '750, 1100, 1500, 2200',
-          class: 'ts-hero__img',
-          alt: section.settings.heading | strip_html | escape
+        | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 2200', class: 'ts-hero__img', alt: ''
       }}
     {%- elsif section.settings.enable_video -%}
-      {%- comment -%} Animated smoke — mirrors the app (TS-Smoky2.mp4: loop, muted, autoplay, cover, normal speed, opacity 0.5). JPG is the instant poster. {%- endcomment -%}
       <video
         class="ts-hero__img ts-hero__video"
         autoplay
@@ -39,15 +39,7 @@
         <source src="{{ 'ts-hero-smoke.mp4' | asset_url }}" type="video/mp4">
       </video>
     {%- else -%}
-      <img
-        class="ts-hero__img"
-        src="{{ 'ts-hero-smoke.jpg' | asset_url }}"
-        alt=""
-        width="2000"
-        height="1333"
-        loading="eager"
-        fetchpriority="high"
-      >
+      <img class="ts-hero__img" src="{{ 'ts-hero-smoke.jpg' | asset_url }}" alt="" width="2000" height="1333" loading="eager" fetchpriority="high">
     {%- endif -%}
   </div>
 
@@ -58,22 +50,77 @@
       <span class="ts-pill ts-hero__eyebrow">{{ section.settings.eyebrow }}</span>
     {%- endif -%}
 
-    {%- if section.settings.heading != blank -%}
-      <h1 class="ts-hero__heading">{{ section.settings.heading }}</h1>
+    {%- if section.settings.logo != blank -%}
+      {{
+        section.settings.logo
+        | image_url: width: 1320
+        | image_tag:
+          class: 'ts-hero__logo',
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '360, 480, 660, 900, 1320',
+          sizes: '(max-width: 640px) 78vw, min(660px, 78vw)',
+          alt: shop.name | escape
+      }}
+      <h1 class="ts-hero__heading visually-hidden">{{ heading_text | strip_html }}</h1>
+    {%- else -%}
+      <img
+        class="ts-hero__logo"
+        src="{{ 'ts-hero-logo.png' | asset_url }}"
+        width="1320"
+        height="409"
+        alt="{{ shop.name | escape }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+      <h1 class="ts-hero__heading visually-hidden">{{ heading_text | strip_html }}</h1>
     {%- endif -%}
 
     {%- if section.settings.subheading != blank -%}
       <p class="ts-hero__sub">{{ section.settings.subheading }}</p>
     {%- endif -%}
 
-    {%- if section.settings.button_label != blank -%}
-      <a
-        href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
-        class="button ts-hero__cta"
-      >
-        {{ section.settings.button_label }}
-      </a>
-    {%- endif -%}
+    <div class="ts-hero__signup">
+      {%- form 'customer', id: 'HeroEarlyAccess', class: 'ts-hero__form' -%}
+        <input type="hidden" name="contact[tags]" value="early-access, newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="ts-hero__success" role="status">
+            <span class="ts-hero__success-check" aria-hidden="true">&#10003;</span>
+            {{ section.settings.email_success }}
+          </p>
+        {%- else -%}
+          <div class="ts-hero__form-row">
+            <input
+              type="email"
+              name="contact[email]"
+              class="ts-hero__email"
+              value="{{ form.email }}"
+              placeholder="your@email.com"
+              aria-label="{{ 'newsletter.label' | t }}"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              required
+              {% if form.errors %}
+                aria-invalid="true"
+              {% endif %}
+            >
+            <button type="submit" name="commit" class="ts-hero__email-btn">
+              {{ section.settings.email_button_label }}
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <small class="ts-hero__form-error">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </small>
+          {%- endif -%}
+          {%- if section.settings.email_note != blank -%}
+            <p class="ts-hero__note">{{ section.settings.email_note }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
   </div>
 
   {%- if section.settings.show_scroll_cue -%}
@@ -86,6 +133,15 @@
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </button>
   {%- endif -%}
+
+  {%- if section.settings.show_marquee and section.settings.marquee_text != blank -%}
+    <div class="ts-hero__marquee" aria-hidden="true">
+      <div class="ts-hero__marquee-row">
+        <span>{{ section.settings.marquee_text }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+        <span>{{ section.settings.marquee_text }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -96,15 +152,30 @@
   "settings": [
     {
       "type": "image_picker",
+      "id": "logo",
+      "label": "Wordmark logo",
+      "info": "Centered hero logo. Leave empty to use the bundled Top$hottas wordmark."
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 240,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 660
+    },
+    {
+      "type": "image_picker",
       "id": "image",
       "label": "Background image",
-      "info": "Optional. Overrides the animated smoke. Leave empty to use smoke."
+      "info": "Optional. Overrides the animated smoke."
     },
     {
       "type": "checkbox",
       "id": "enable_video",
       "label": "Animated smoke background",
-      "info": "Plays the looping smoke video (muted). Falls back to a still image if off or unsupported.",
       "default": true
     },
     {
@@ -112,11 +183,10 @@
       "id": "smoke_opacity",
       "min": 20,
       "max": 100,
-      "step": 5,
+      "step": 2,
       "unit": "%",
       "label": "Smoke visibility",
-      "info": "App default is 50%. Higher = more visible smoke in the hero.",
-      "default": 50
+      "default": 62
     },
     {
       "type": "range",
@@ -152,31 +222,63 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow tag",
-      "default": "Top Shottas Select"
+      "label": "Eyebrow pill",
+      "default": "VOL. 01"
     },
     {
       "type": "inline_richtext",
       "id": "heading",
-      "label": "Heading",
-      "default": "Built for late nights and everyday rotation"
+      "label": "Heading (SEO / logo fallback)",
+      "info": "Kept as the page's H1. Shown as text only if no logo is set.",
+      "default": "Top$hottas"
     },
     {
       "type": "text",
       "id": "subheading",
-      "label": "Subheading",
-      "default": "Heavyweight streetwear. Limited drops."
+      "label": "Body sentence",
+      "default": "Premium streetwear. List members shop Vol. 01 first — 24h before it's public."
+    },
+    {
+      "type": "header",
+      "content": "Early access signup"
     },
     {
       "type": "text",
-      "id": "button_label",
+      "id": "email_button_label",
       "label": "Button label",
-      "default": "Shop the drop"
+      "default": "GET EARLY ACCESS"
     },
     {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button link"
+      "type": "text",
+      "id": "email_note",
+      "label": "Note under form",
+      "default": "First access to the drop. No spam."
+    },
+    {
+      "type": "text",
+      "id": "email_success",
+      "label": "Success message",
+      "default": "YOU'RE IN — YOU SHOP THE DROP FIRST."
+    },
+    {
+      "type": "header",
+      "content": "Marquee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_marquee",
+      "label": "Show marquee ticker",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "marquee_text",
+      "label": "Marquee text",
+      "default": "TOP$HOTTAS · WHERE THERE'S SMOKE... · VOL.01 · SMOKE SEASON · EST. 2026"
+    },
+    {
+      "type": "header",
+      "content": "Extras"
     },
     {
       "type": "checkbox",
