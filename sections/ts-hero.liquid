@@ -139,8 +139,8 @@
   {%- if section.settings.show_marquee and section.settings.marquee_text != blank -%}
     <div class="ts-hero__marquee" aria-hidden="true">
       <div class="ts-hero__marquee-row">
-        <span>{{ section.settings.marquee_text }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
-        <span>{{ section.settings.marquee_text }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+        {%- comment -%} Repeated enough that half the row always overfills the viewport (seamless -50% loop, no gaps). {%- endcomment -%}
+        {%- for i in (1..8) -%}<span>{{ section.settings.marquee_text }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>{%- endfor -%}
       </div>
     </div>
   {%- endif -%}

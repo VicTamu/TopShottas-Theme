@@ -583,7 +583,7 @@ hr,
 
 .ts-hero__marquee-row {
   display: inline-flex;
-  animation: tsHeroMq 26s linear infinite;
+  animation: tsHeroMq 50s linear infinite;
 }
 
 .ts-hero__marquee-row span {
