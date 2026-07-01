@@ -52,31 +52,32 @@
       <span class="ts-pill ts-hero__eyebrow">{{ section.settings.eyebrow }}</span>
     {%- endif -%}
 
-    {%- if section.settings.logo != blank -%}
-      {{
-        section.settings.logo
-        | image_url: width: 1320
-        | image_tag:
-          class: 'ts-hero__logo',
-          loading: 'eager',
-          fetchpriority: 'high',
-          widths: '360, 480, 660, 900, 1320',
-          sizes: '(max-width: 640px) 78vw, min(660px, 78vw)',
-          alt: shop.name | escape
-      }}
-      <h1 class="ts-hero__heading visually-hidden">{{ heading_text | strip_html }}</h1>
-    {%- else -%}
-      <img
-        class="ts-hero__logo"
-        src="{{ 'ts-hero-logo.png' | asset_url }}"
-        width="1320"
-        height="409"
-        alt="{{ shop.name | escape }}"
-        loading="eager"
-        fetchpriority="high"
-      >
-      <h1 class="ts-hero__heading visually-hidden">{{ heading_text | strip_html }}</h1>
-    {%- endif -%}
+    {%- comment -%} Logo is the page H1; its alt supplies the accessible heading text (no duplicate hidden heading). {%- endcomment -%}
+    <h1 class="ts-hero__brand">
+      {%- if section.settings.logo != blank -%}
+        {{
+          section.settings.logo
+          | image_url: width: 1320
+          | image_tag:
+            class: 'ts-hero__logo',
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '360, 480, 660, 900, 1320',
+            sizes: '(max-width: 640px) 78vw, min(660px, 78vw)',
+            alt: heading_text | strip_html | escape
+        }}
+      {%- else -%}
+        <img
+          class="ts-hero__logo"
+          src="{{ 'ts-hero-logo.png' | asset_url }}"
+          width="1320"
+          height="409"
+          alt="{{ heading_text | strip_html | escape }}"
+          loading="eager"
+          fetchpriority="high"
+        >
+      {%- endif -%}
+    </h1>
 
     {%- if section.settings.subheading != blank -%}
       <p class="ts-hero__sub">{{ section.settings.subheading }}</p>
@@ -105,6 +106,7 @@
               required
               {% if form.errors %}
                 aria-invalid="true"
+                aria-describedby="HeroEarlyAccess-error"
               {% endif %}
             >
             <button type="submit" name="commit" class="ts-hero__email-btn">
@@ -112,7 +114,7 @@
             </button>
           </div>
           {%- if form.errors -%}
-            <small class="ts-hero__form-error">
+            <small id="HeroEarlyAccess-error" class="ts-hero__form-error">
               {{ form.errors.translated_fields.email | capitalize }}
               {{ form.errors.messages.email }}
             </small>

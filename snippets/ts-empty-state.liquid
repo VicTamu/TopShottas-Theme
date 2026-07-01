@@ -21,7 +21,8 @@
     <span class="ts-pill ts-empty__badge">{{ badge }}</span>
   {%- endif -%}
 
-  <h1 class="ts-empty__title">{{ title }}</h1>
+  {%- assign ts_htag = heading_tag | default: 'h1' -%}
+  <{{ ts_htag }} class="ts-empty__title">{{ title }}</{{ ts_htag }}>
 
   {%- if text != blank -%}
     <p class="ts-empty__text">{{ text }}</p>

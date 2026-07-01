@@ -447,6 +447,11 @@ hr,
 }
 
 /* Wordmark logo — the monument centerpiece (LCP) */
+.ts-hero__brand {
+  margin: 0;
+  line-height: 0;
+}
+
 .ts-hero__logo {
   display: block;
   width: min(var(--ts-logo-max, 660px), 78vw);
@@ -502,8 +507,9 @@ hr,
   color: #7d8574;
 }
 
-.ts-hero__email:focus {
-  outline: none;
+.ts-hero__email:focus-visible {
+  outline: 2px solid var(--ts-gold);
+  outline-offset: 2px;
   border-color: var(--ts-gold);
 }
 
@@ -531,7 +537,7 @@ hr,
   margin: 10px 0 0;
   font-size: 11px;
   letter-spacing: 0.02em;
-  color: #6f7a68;
+  color: #929c88;
 }
 
 .ts-hero__form-error {
