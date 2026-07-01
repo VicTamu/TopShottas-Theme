@@ -1318,3 +1318,13 @@ html {
     display: none;
   }
 }
+
+/* ============================================================
+ * PASS 17 — Home page tweaks
+ * Hide the header logo on the homepage only (the hero wordmark
+ * already carries the brand). Space is preserved so the nav /
+ * icons don't shift.
+ * ============================================================ */
+.ts-home .header__heading {
+  visibility: hidden;
+}

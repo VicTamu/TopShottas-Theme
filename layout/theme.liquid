@@ -299,7 +299,7 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if settings.site_smoke_enabled %} ts-smoke-on{% endif %}">
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if settings.site_smoke_enabled %} ts-smoke-on{% endif %}{% if request.page_type == 'index' %} ts-home{% endif %}">
     {% render 'ts-smoke-bg' %}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
@@ -327,6 +327,17 @@
         var toggle = function () { btn.classList.toggle('is-visible', window.scrollY > 600); };
         toggle();
         window.addEventListener('scroll', toggle, { passive: true });
+      })();
+    </script>
+    <script>
+      (function () {
+        var rate = 0.5;
+        document.querySelectorAll('.ts-hero__video, .ts-smoke-bg__video').forEach(function (v) {
+          var apply = function () { try { v.playbackRate = rate; } catch (e) {} };
+          apply();
+          v.addEventListener('loadedmetadata', apply);
+          v.addEventListener('play', apply);
+        });
       })();
     </script>
 
