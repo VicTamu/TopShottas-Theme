@@ -13,7 +13,7 @@
 -%}
 
 <div
-  class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} ts-hero--monument color-{{ section.settings.color_scheme }}"
+  class="ts-hero ts-hero--{{ section.settings.height }} ts-hero--{{ section.settings.alignment }} ts-hero--monument color-{{ section.settings.color_scheme }}{% if settings.site_smoke_enabled and section.settings.image == blank %} ts-hero--shared{% endif %}"
   style="--ts-hero-overlay: {{ overlay | divided_by: 100.0 }}; --ts-smoke-opacity: {{ smoke_opacity | divided_by: 100.0 }}; --ts-logo-max: {{ section.settings.logo_max_width | default: 660 }}px;"
 >
   <div class="ts-hero__media">
@@ -23,6 +23,8 @@
         | image_url: width: 2200
         | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 2200', class: 'ts-hero__img', alt: ''
       }}
+    {%- elsif settings.site_smoke_enabled -%}
+      {%- comment -%} Shares the site-wide smoke layer — no separate hero video for a uniform atmosphere. {%- endcomment -%}
     {%- elsif section.settings.enable_video -%}
       <video
         class="ts-hero__img ts-hero__video"
