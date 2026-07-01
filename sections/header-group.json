@@ -17,17 +17,25 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to the Top$hotta Family!",
+            "text": "Free shipping over $75 · Tracked · Easy 14-day returns",
             "link": ""
+          }
+        },
+        "announcement-bar-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Drop 001 — live now · List members shop first",
+            "link": "shopify://collections/all"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement-bar-1"
       ],
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 6,
         "color_scheme": "scheme-5",
         "show_line_separator": true,
         "show_social": false,
