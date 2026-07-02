@@ -1606,3 +1606,30 @@ html {
   padding-top: 1.2rem;
   border-top: 1px solid var(--ts-hairline);
 }
+
+/* ============================================================
+ * PASS 19 — Gold checkout CTA (matches the contact page SEND IT)
+ * Cart page checkout + toast checkout. Selector specificity is
+ * matched to the PASS 2 primary-button overrides so gold wins.
+ * ============================================================ */
+.button.cart__checkout-button:not(.button--secondary),
+.cart-notification__links .button.button--primary {
+  background: var(--ts-gold);
+  color: #040805;
+}
+
+.button.cart__checkout-button:not(.button--secondary)::after,
+.cart-notification__links .button.button--primary::after {
+  box-shadow: none;
+}
+
+.button.cart__checkout-button:not(.button--secondary):not([disabled]):hover,
+.cart-notification__links .button.button--primary:not([disabled]):hover {
+  background: #d4bc82;
+}
+
+.button.cart__checkout-button:focus-visible,
+.cart-notification__links .button.button--primary:focus-visible {
+  outline: 2px solid #f2f1ec;
+  outline-offset: 3px;
+}
