@@ -358,7 +358,10 @@ hr,
   min-height: 60vh;
 }
 .ts-hero--medium {
-  min-height: 78vh;
+  min-height: 84vh;
+  /* Fill to just above the viewport bottom (accounts for announcement + header)
+     so the marquee ticker sits near the screen edge on any screen size. */
+  min-height: calc(100svh - 132px);
 }
 .ts-hero--large {
   min-height: 92vh;
