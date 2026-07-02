@@ -1501,13 +1501,32 @@ html {
   font-family: inherit;
 }
 
+/* Contact submit — gold/black (overrides the shared green hero button):
+   solid gold pops as the page's single strongest CTA on the dark card. */
 .ts-contact__submit {
   width: 100%;
   margin-top: 0.4rem;
+  background: var(--ts-gold);
+  color: #040805;
+}
+
+.ts-contact__submit:hover {
+  background: #d4bc82;
+}
+
+.ts-contact__submit:focus-visible {
+  outline: 2px solid #f2f1ec;
+  outline-offset: 2px;
 }
 
 .ts-contact__note {
   text-align: center;
+}
+
+/* Customer care note in the trust aside — slightly brighter than the
+   utility lines so the human message stands out. */
+.ts-contact__trust-note {
+  color: #c4ccbc;
 }
 
 .ts-contact__success {

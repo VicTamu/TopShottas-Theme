@@ -139,6 +139,9 @@
           {%- if section.settings.trust_line_1 != blank -%}
             <li class="ts-contact__trust-line">{{ section.settings.trust_line_1 }}</li>
           {%- endif -%}
+          {%- if section.settings.trust_note != blank -%}
+            <li class="ts-contact__trust-line ts-contact__trust-note">{{ section.settings.trust_note }}</li>
+          {%- endif -%}
           {%- if section.settings.trust_line_2 != blank -%}
             <li class="ts-contact__trust-line">{{ section.settings.trust_line_2 }}</li>
           {%- endif -%}
@@ -172,7 +175,7 @@
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Order help, sizing, collabs — whatever it is, it lands with a real person." },
     { "type": "header", "content": "Topic selector" },
     { "type": "text", "id": "topics_label", "label": "Topics label", "default": "What's this about?" },
-    { "type": "text", "id": "topics", "label": "Topics (comma-separated)", "default": "Order help, Sizing, Collab / wholesale, Something else" },
+    { "type": "text", "id": "topics", "label": "Topics (comma-separated)", "default": "Order help, Sizing, Collab / wholesale, Feedback" },
     { "type": "header", "content": "Form" },
     { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Tell us what's up…" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "SEND IT" },
@@ -183,6 +186,7 @@
     { "type": "text", "id": "contact_email", "label": "Contact email" },
     { "type": "text", "id": "instagram_handle", "label": "Instagram handle text", "default": "@topshottasapparel" },
     { "type": "text", "id": "trust_line_1", "label": "Trust line 1", "default": "Tracked shipping on every order — free over $75." },
+    { "type": "textarea", "id": "trust_note", "label": "Customer care note", "default": "From browsing to delivery to everyday wear — we want your Top$hottas experience to be the best it can be. Don't hesitate to reach out with any questions." },
     { "type": "text", "id": "trust_line_2", "label": "Trust line 2", "default": "Easy 14-day returns if the fit isn't right." },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 64 },
