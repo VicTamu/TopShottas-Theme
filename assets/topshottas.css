@@ -658,16 +658,20 @@ hr,
 }
 
 .ts-ship-bar__track {
-  height: 0.6rem;
+  height: 0.9rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(242, 241, 236, 0.1);
   overflow: hidden;
 }
 
+/* Gold = progress toward the perk (pops on the dark green panel);
+   flips to green once free shipping unlocks. */
 .ts-ship-bar__fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--ts-moss), var(--ts-pine));
+  background: linear-gradient(90deg, var(--ts-brass), var(--ts-gold) 70%, #d4bc82);
+  box-shadow: 0 0 8px rgba(194, 169, 109, 0.35);
   transition: width 0.7s var(--ts-ease);
 }
 
@@ -679,6 +683,7 @@ hr,
 
 .ts-ship-bar--unlocked .ts-ship-bar__fill {
   background: linear-gradient(90deg, var(--ts-pine), var(--ts-sage));
+  box-shadow: 0 0 8px rgba(122, 164, 109, 0.4);
 }
 
 /* Product-page trust row under the buy buttons */
