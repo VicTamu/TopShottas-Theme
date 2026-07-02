@@ -1,0 +1,193 @@
+{% comment %}
+  Top$hottas contact — conversion-focused contact form.
+  Glass card over the site smoke: eyebrow pill, H1, topic pills (routes
+  intent into the email via contact[Topic]), name/email/message, green
+  submit, response-time note, and a trust strip (email / IG / policy).
+  Uses Shopify's native {% form 'contact' %} — submissions go to the
+  store's sender email; custom fields are included automatically.
+{% endcomment %}
+
+<div class="ts-contact color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="ts-contact__grid">
+      <div class="ts-contact__card">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="ts-pill ts-contact__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+
+        <h1 class="ts-contact__heading">{{ section.settings.heading }}</h1>
+
+        {%- if section.settings.subheading != blank -%}
+          <p class="ts-contact__sub">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+
+        {%- form 'contact', id: 'TsContactForm', class: 'ts-contact__form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="ts-hero__success ts-contact__success" role="status" tabindex="-1" autofocus>
+              <span class="ts-hero__success-check" aria-hidden="true">&#10003;</span>
+              {{ section.settings.success_message }}
+            </p>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="ts-contact__error" role="alert" tabindex="-1" autofocus>
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </p>
+            {%- endif -%}
+
+            {%- if section.settings.topics != blank -%}
+              <fieldset class="ts-contact__topics">
+                <legend class="ts-contact__label">{{ section.settings.topics_label }}</legend>
+                <div class="ts-contact__topic-row">
+                  {%- assign topic_list = section.settings.topics | split: ',' -%}
+                  {%- for topic in topic_list -%}
+                    {%- assign topic_clean = topic | strip -%}
+                    <input
+                      type="radio"
+                      name="contact[Topic]"
+                      id="TsTopic-{{ forloop.index }}"
+                      class="ts-contact__topic-input visually-hidden"
+                      value="{{ topic_clean | escape }}"
+                      {% if forloop.first %}checked{% endif %}
+                    >
+                    <label class="ts-contact__topic-pill" for="TsTopic-{{ forloop.index }}">{{ topic_clean }}</label>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+            {%- endif -%}
+
+            <div class="ts-contact__row">
+              <div class="ts-contact__field">
+                <label class="ts-contact__label" for="TsContact-name">Name</label>
+                <input
+                  type="text"
+                  id="TsContact-name"
+                  name="contact[Name]"
+                  class="ts-contact__input"
+                  value="{% if form.name %}{{ form.name }}{% endif %}"
+                  autocomplete="name"
+                  placeholder="Your name"
+                >
+              </div>
+              <div class="ts-contact__field">
+                <label class="ts-contact__label" for="TsContact-email">Email</label>
+                <input
+                  type="email"
+                  id="TsContact-email"
+                  name="contact[email]"
+                  class="ts-contact__input"
+                  value="{{ form.email }}"
+                  autocomplete="email"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  placeholder="your@email.com"
+                  required
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="TsContact-email-error"
+                  {% endif %}
+                >
+                {%- if form.errors contains 'email' -%}
+                  <small id="TsContact-email-error" class="ts-hero__form-error">
+                    {{ form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email }}
+                  </small>
+                {%- endif -%}
+              </div>
+            </div>
+
+            <div class="ts-contact__field">
+              <label class="ts-contact__label" for="TsContact-body">Message</label>
+              <textarea
+                id="TsContact-body"
+                name="contact[body]"
+                class="ts-contact__input ts-contact__textarea"
+                rows="5"
+                placeholder="{{ section.settings.message_placeholder }}"
+                required
+              >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+
+            <button type="submit" class="ts-hero__email-btn ts-contact__submit">
+              {{ section.settings.button_label }}
+            </button>
+
+            {%- if section.settings.response_note != blank -%}
+              <p class="ts-hero__note ts-contact__note">{{ section.settings.response_note }}</p>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      <aside class="ts-contact__aside" aria-label="Other ways to reach us">
+        {%- if section.settings.aside_heading != blank -%}
+          <h2 class="ts-contact__aside-heading">{{ section.settings.aside_heading }}</h2>
+        {%- endif -%}
+        <ul class="ts-contact__trust list-unstyled">
+          {%- if section.settings.contact_email != blank -%}
+            <li>
+              <span class="ts-contact__trust-label">Email</span>
+              <a class="ts-contact__trust-link" href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
+            </li>
+          {%- endif -%}
+          {%- if settings.social_instagram_link != blank -%}
+            <li>
+              <span class="ts-contact__trust-label">Instagram</span>
+              <a class="ts-contact__trust-link" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">{{ section.settings.instagram_handle | default: 'Follow us' }}</a>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.trust_line_1 != blank -%}
+            <li class="ts-contact__trust-line">{{ section.settings.trust_line_1 }}</li>
+          {%- endif -%}
+          {%- if section.settings.trust_line_2 != blank -%}
+            <li class="ts-contact__trust-line">{{ section.settings.trust_line_2 }}</li>
+          {%- endif -%}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Top$hottas contact",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow pill", "default": "TALK TO US" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in touch" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Order help, sizing, collabs — whatever it is, it lands with a real person." },
+    { "type": "header", "content": "Topic selector" },
+    { "type": "text", "id": "topics_label", "label": "Topics label", "default": "What's this about?" },
+    { "type": "text", "id": "topics", "label": "Topics (comma-separated)", "default": "Order help, Sizing, Collab / wholesale, Something else" },
+    { "type": "header", "content": "Form" },
+    { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Tell us what's up…" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "SEND IT" },
+    { "type": "text", "id": "response_note", "label": "Response-time note", "default": "We reply within 24 hours. No bots, no runaround." },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "GOT IT — WE'LL HIT YOU BACK WITHIN 24H." },
+    { "type": "header", "content": "Trust strip" },
+    { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "Other ways in" },
+    { "type": "text", "id": "contact_email", "label": "Contact email" },
+    { "type": "text", "id": "instagram_handle", "label": "Instagram handle text", "default": "@topshottasapparel" },
+    { "type": "text", "id": "trust_line_1", "label": "Trust line 1", "default": "Tracked shipping on every order — free over $75." },
+    { "type": "text", "id": "trust_line_2", "label": "Trust line 2", "default": "Easy 14-day returns if the fit isn't right." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 80 }
+  ],
+  "presets": [{ "name": "Top$hottas contact" }]
+}
+{% endschema %}

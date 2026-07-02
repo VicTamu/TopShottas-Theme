@@ -1345,3 +1345,234 @@ html {
 .ts-home .header__heading {
   visibility: hidden;
 }
+
+/* ============================================================
+ * PASS 18 — Contact page (sections/ts-contact.liquid)
+ * Glass card over the site smoke: topic pills, brand inputs,
+ * green submit, trust aside. Reuses hero form styles where shared.
+ * ============================================================ */
+.ts-contact__grid {
+  display: grid;
+  gap: 3.2rem;
+  align-items: start;
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 990px) {
+  .ts-contact__grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 4.8rem;
+  }
+}
+
+.ts-contact__card {
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ts-hairline);
+  border-radius: 2rem;
+  padding: 3.2rem;
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.28);
+}
+
+@media screen and (max-width: 749px) {
+  .ts-contact__card {
+    padding: 2.2rem 1.8rem;
+  }
+}
+
+.ts-contact__heading {
+  margin: 1.4rem 0 0.6rem;
+  font-size: clamp(2.8rem, 4.5vw, 3.8rem);
+  letter-spacing: -0.02em;
+  color: var(--ts-text);
+}
+
+.ts-contact__sub {
+  margin: 0 0 2.4rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #c4ccbc;
+}
+
+/* Labels — mono uppercase micro-labels (brand voice) */
+.ts-contact__label {
+  display: block;
+  margin-bottom: 0.7rem;
+  padding: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #cdd4c4;
+}
+
+/* Topic pills — radio group styled like app variant pills */
+.ts-contact__topics {
+  margin: 0 0 2rem;
+  padding: 0;
+  border: 0;
+}
+
+.ts-contact__topic-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.ts-contact__topic-pill {
+  display: inline-block;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--ts-hairline-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ts-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ts-ease), border-color 0.2s var(--ts-ease), color 0.2s var(--ts-ease);
+}
+
+.ts-contact__topic-pill:hover {
+  border-color: var(--ts-accent-border);
+  color: var(--ts-text);
+}
+
+.ts-contact__topic-input:checked + .ts-contact__topic-pill {
+  background: var(--ts-accent-soft);
+  border-color: var(--ts-accent-border);
+  color: var(--ts-text);
+}
+
+.ts-contact__topic-input:focus-visible + .ts-contact__topic-pill {
+  outline: 2px solid var(--ts-gold);
+  outline-offset: 2px;
+}
+
+/* Fields */
+.ts-contact__row {
+  display: grid;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+@media screen and (min-width: 750px) {
+  .ts-contact__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ts-contact__field {
+  margin-bottom: 0;
+}
+
+.ts-contact__field + .ts-contact__field {
+  margin-top: 0;
+}
+
+.ts-contact__form > .ts-contact__field {
+  margin-bottom: 1.6rem;
+}
+
+.ts-contact__input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(242, 241, 236, 0.2);
+  border-radius: 2px;
+  padding: 1.4rem 1.6rem;
+  color: #f2f1ec;
+  font-size: 1.4rem;
+}
+
+.ts-contact__input::placeholder {
+  color: #7d8574;
+}
+
+.ts-contact__input:focus-visible {
+  outline: 2px solid var(--ts-gold);
+  outline-offset: 2px;
+  border-color: var(--ts-gold);
+}
+
+.ts-contact__textarea {
+  resize: vertical;
+  min-height: 12rem;
+  font-family: inherit;
+}
+
+.ts-contact__submit {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.ts-contact__note {
+  text-align: center;
+}
+
+.ts-contact__success {
+  display: flex;
+  justify-content: center;
+}
+
+.ts-contact__error {
+  margin: 0 0 1.6rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(226, 75, 74, 0.4);
+  border-radius: 2px;
+  background: rgba(226, 75, 74, 0.12);
+  color: #f0b9b9;
+  font-size: 1.3rem;
+}
+
+/* Trust aside */
+.ts-contact__aside {
+  padding-top: 1rem;
+}
+
+.ts-contact__aside-heading {
+  margin: 0 0 1.8rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ts-brass);
+}
+
+.ts-contact__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 0;
+}
+
+.ts-contact__trust-label {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ts-brass);
+  margin-bottom: 0.3rem;
+}
+
+.ts-contact__trust-link {
+  color: var(--ts-text);
+  font-size: 1.5rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ts-hairline-strong);
+  transition: color 0.2s var(--ts-ease), border-color 0.2s var(--ts-ease);
+}
+
+.ts-contact__trust-link:hover {
+  color: var(--ts-gold);
+  border-color: var(--ts-gold);
+}
+
+.ts-contact__trust-line {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--ts-muted);
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--ts-hairline);
+}
