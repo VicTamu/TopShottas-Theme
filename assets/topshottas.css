@@ -668,7 +668,13 @@ hr,
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--ts-moss), var(--ts-pine));
-  transition: width 0.4s var(--ts-ease);
+  transition: width 0.7s var(--ts-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-ship-bar__fill {
+    transition: none;
+  }
 }
 
 .ts-ship-bar--unlocked .ts-ship-bar__fill {

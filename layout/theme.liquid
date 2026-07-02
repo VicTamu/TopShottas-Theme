@@ -331,6 +331,39 @@
     </script>
     <script>
       (function () {
+        var KEY = 'tsShipPct';
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function animate(fill) {
+          var target = fill.getAttribute('data-target');
+          if (target === null || fill.dataset.tsAnimated) return;
+          fill.dataset.tsAnimated = '1';
+          var prev = null;
+          try { prev = sessionStorage.getItem(KEY); } catch (e) {}
+          if (!reduce && prev !== null && prev !== target) {
+            fill.style.width = prev + '%';
+            void fill.offsetWidth;
+            fill.style.width = target + '%';
+          }
+          try { sessionStorage.setItem(KEY, target); } catch (e) {}
+        }
+        function scan(root) {
+          if (!root.querySelectorAll) return;
+          root.querySelectorAll('.ts-ship-bar__fill').forEach(animate);
+        }
+        scan(document);
+        new MutationObserver(function (muts) {
+          muts.forEach(function (m) {
+            m.addedNodes.forEach(function (n) {
+              if (n.nodeType !== 1) return;
+              if (n.classList && n.classList.contains('ts-ship-bar__fill')) animate(n);
+              else scan(n);
+            });
+          });
+        }).observe(document.body, { childList: true, subtree: true });
+      })();
+    </script>
+    <script>
+      (function () {
         var rate = 0.7;
         var KEY = 'tsSmokeTime';
         var vids = document.querySelectorAll('.ts-hero__video, .ts-smoke-bg__video');
