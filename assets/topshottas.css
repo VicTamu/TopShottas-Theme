@@ -1441,7 +1441,7 @@ html {
 
 .ts-contact__topic-input:checked + .ts-contact__topic-pill {
   background: var(--ts-accent-soft);
-  border-color: var(--ts-accent-border);
+  border-color: var(--ts-gold);
   color: var(--ts-text);
 }
 
